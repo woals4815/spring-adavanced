@@ -1,6 +1,10 @@
 package hello.advanced.template;
 
+import hello.advanced.template.code.AbstractTemplate;
+import hello.advanced.template.code.SubClassLogic1;
+import hello.advanced.template.code.SubClassLogic2;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @Slf4j
@@ -12,6 +16,16 @@ public class TemplateMethodTest {
         logic2();
     }
 
+    @Test
+    @DisplayName("Template method applied")
+    void templateMethodV1() {
+        AbstractTemplate template1 = new SubClassLogic1();
+        template1.excute();
+
+        AbstractTemplate template2 = new SubClassLogic2();
+        template2.excute();
+    }
+    //code duplicate
     private void logic1() {
         long startTime = System.currentTimeMillis();
         //business logic start
@@ -22,7 +36,7 @@ public class TemplateMethodTest {
 
         log.info("resultTime={}", resultTime);
     }
-
+    //code duplicate
     private void logic2() {
         long startTime = System.currentTimeMillis();
         //business logic start
