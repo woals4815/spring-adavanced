@@ -25,6 +25,28 @@ public class TemplateMethodTest {
         AbstractTemplate template2 = new SubClassLogic2();
         template2.excute();
     }
+
+    @Test
+    void templateMethodV2() {
+        AbstractTemplate abstractTemplate1 = new AbstractTemplate() {
+
+            @Override
+            protected void call() {
+                log.info("business logic1 start");
+            }
+
+        };
+        abstractTemplate1.excute();
+
+        AbstractTemplate abstractTemplate2 = new AbstractTemplate() {
+
+            @Override
+            protected void call() {
+                log.info("business logic2 start");
+            }
+        };
+        abstractTemplate2.excute();
+    }
     //code duplicate
     private void logic1() {
         long startTime = System.currentTimeMillis();
