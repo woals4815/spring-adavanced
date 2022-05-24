@@ -1,6 +1,7 @@
 package hello.advanced.strategy;
 
 import hello.advanced.strategy.code.strategy.ContextV1;
+import hello.advanced.strategy.code.strategy.Strategy;
 import hello.advanced.strategy.code.strategy.StrategyLogic1;
 import hello.advanced.strategy.code.strategy.StrategyLogic2;
 import lombok.extern.slf4j.Slf4j;
@@ -51,5 +52,21 @@ public class ContextV1Test {
 
         ContextV1 contextV2 = new ContextV1(strategyLogic2);
         contextV2.execute();
+    }
+
+    @Test
+    @DisplayName("Strategy pattern anonymous inner class")
+    void strategyV2() {
+        Strategy strategyLogic1 = new Strategy() {
+
+            @Override
+            public void call() {
+                log.info("business logic 1 start");
+
+            }
+        };
+
+        ContextV1 contextV1 = new ContextV1(strategyLogic1);
+        contextV1.execute();
     }
 }
