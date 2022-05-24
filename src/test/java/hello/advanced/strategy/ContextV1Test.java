@@ -69,4 +69,24 @@ public class ContextV1Test {
         ContextV1 contextV1 = new ContextV1(strategyLogic1);
         contextV1.execute();
     }
+
+    @Test
+    @DisplayName("Strategy pattern anonymous inner class v2")
+    void strategyV3() {
+
+        ContextV1 contextV1 = new ContextV1(new Strategy() {
+            @Override
+            public void call() {
+                log.info("business logic 1 start");
+
+            }
+        });
+        contextV1.execute();
+    }
+    @Test
+    @DisplayName("Strategy pattern anonymous inner class v3")
+    void strategyV4() {
+        ContextV1 contextV1 = new ContextV1(() -> log.info("business logic 1 start"));
+        contextV1.execute();
+    }
 }
